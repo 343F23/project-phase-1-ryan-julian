@@ -3,7 +3,10 @@ nav {
     background-color: aqua;
 }
 
-main {
-    color: aqua;
-    background-color: aqua;
+main{
+    background-color: grey;
 }
+footer{
+    background-color: grey;
+}
+
