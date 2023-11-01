@@ -1,3 +1,7 @@
+h1{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+}
 body{
     background-color: lightblue;
 }
@@ -9,6 +13,7 @@ main{
 }
 .ryan nav a{
     color: lightblue;
+    background-color: grey;
 }
 
 .about-us {
@@ -23,6 +28,23 @@ footer{
 }
 
 footer p{
+    color: lightblue;
     margin:20px;
 }
 
+footer a{
+    color: lightblue;
+}
+
+@media (max-width: 256px) {
+    .carousel-inner img {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+ 

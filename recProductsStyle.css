@@ -17,6 +17,7 @@ body{
   background-color: lightblue;
 }
 h1{
+  font-family: 'Times New Roman', Times, serif;
   margin: 20px;
 }
 h2{
@@ -56,7 +57,8 @@ h3{
     background-color: grey;
 }
 .ryan nav a{
-    color: lightblue;
+  color: lightblue;
+  background-color: grey;
 }
 
 .about-us {
@@ -64,12 +66,17 @@ h3{
 }
 
 footer{
-    background-color: grey;
-    position: relative;
-    width: 100%;
-    bottom: 0;
+  background-color: grey;
+  position: relative;
+  width: 100%;
+  bottom: 0;
 }
 
 footer p{
-    margin:20px;
+  color: lightblue;
+  margin:20px;
 }
+
+footer a{
+  color: lightblue;
+} 
