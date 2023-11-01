@@ -1,5 +1,49 @@
 
   main {
-    background-color: antiquewhite;
-    c
+      display: flex;
+      flex-direction: column; /* This sets the direction to row */
+    
+    background-color: grey;
+    
+  }
+
+  h1 {
+  }
+
+  .card1 {
+
+    flex-direction: row; /* This sets the direction to row but isnt doing anythign rn */
+    margin-bottom: 2%;
+    margin-top: 2%;
+    background-color: red;
+  }
+
+
+  .card2 {
+
+    flex-direction: row; /* This sets the direction to row but isnt doing anythign rn */
+    margin-bottom: 3%;
+    margin-top: 2%;
+    background-color: red;
+  }
+
+  .card3 {
+
+    flex-direction: row; /* This sets the direction to row but isnt doing anythign rn */
+    margin-bottom: 2%;
+    margin-top: 3%;
+    background-color: red;
+  }
+
+  .card4 {
+
+    flex-direction: row; /* This sets the direction to row but isnt doing anythign rn */
+    margin-bottom: 2%;
+    margin-top: 2%;
+    background-color: red;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row; /* This sets the direction to row */
   }
