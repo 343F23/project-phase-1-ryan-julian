@@ -1,13 +1,31 @@
 
 body {
-    background-color: grey;
+    background-color: lightblue;
+}
+
+h1{
+    margin:20px;
+}
+
+main{
+    margin:20px;
 }
 
 .ryan nav{
-    background-color: red;
+    background-color: grey;
+}
+.ryan nav a{
+    color: lightblue;
 }
 
 footer{
     background-color: grey;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p{
+    margin:20px;
 }
 
