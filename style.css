@@ -1,21 +1,16 @@
-
-body {
+body{
     background-color: lightblue;
+    margin: 20px;
 }
-
-h1{
-    margin:20px;
-}
-
-main{
-    margin:20px;
-}
-
 .ryan nav{
     background-color: grey;
 }
 .ryan nav a{
     color: lightblue;
+}
+
+.about-us {
+    size: 20dvh;
 }
 
 footer{
