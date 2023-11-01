@@ -1,13 +1,28 @@
 
-  main {    
-    background-color: grey;
-  }
+body{
+  background-color: lightblue;
+}
+h1{
+  margin: 20px;
+}
+h2{
+  margin: 20px;
+}
+h3{
+  margin: 20px;
+}
+ main p{
+  margin: 20px;
+ }
 
+ main a{
+  margin: 10px;
+ }
   .card-container1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 3%;
-    gap: 10px; /* Adjust the gap as needed */
+    gap: 10px;
   }
 
   .card-container2 {
@@ -20,5 +35,27 @@
 
   .flex-container {
     display: flex;
-    flex-direction: row; /* This sets the direction to row */
+    flex-direction: row; 
   }
+
+  .ryan nav{
+    background-color: grey;
+}
+.ryan nav a{
+    color: lightblue;
+}
+
+.about-us {
+    size: 20dvh;
+}
+
+footer{
+    background-color: grey;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p{
+    margin:20px;
+}
