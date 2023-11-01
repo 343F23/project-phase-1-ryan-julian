@@ -1,10 +1,14 @@
 
 body {
-    background-color: grey;
+    background-color: rgb(85, 85, 85);
 }
 
 .ryan nav{
     background-color: red;
+}
+
+.about-us {
+    size: 20dvh;
 }
 
 footer{
