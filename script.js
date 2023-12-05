@@ -7,30 +7,42 @@ const searchForms = [
 
 
 async function searchYoutube(word) {
+
+const url = `https://youtube-v2.p.rapidapi.com/search/?query=${word}&lang=en&order_by=this_month&country=us`;
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'f0e0a900a4msh479711aa70c3583p1d48bejsn352447a82dc3',
+		'X-RapidAPI-Host': 'youtube-v2.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+
+return result;
+
     console.log('searchYoutube', word)
-    const url = `https://youtube138.p.rapidapi.com/auto-complete/?q=${word}&hl=en&gl=US`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'f0e0a900a4msh479711aa70c3583p1d48bejsn352447a82dc3',
-            'X-RapidAPI-Host': 'youtube138.p.rapidapi.com'
-        }
-    };
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
-    return result
+    // try {
+    //     const response = await fetch(url, options);
+    //     const result = await response.json();
+    //     console.log(result);
+    // } catch (error) {
+    //     console.error(error);
+    // }
+    // return result
 
-    // const youtubeResp = await fetch(
-    //     ''
-    // );
+    // // const youtubeResp = await fetch(
+    // //     ''
+    // // );
 
-    // const youtubeResultJSON = await youtubeResp.json();
+    // // const youtubeResultJSON = await youtubeResp.json();
 
 
 
