@@ -71,12 +71,16 @@ async function slowYTRoll(query, delay) {
     return p
 }
 
+
+function getEmbed(videoId) {
+    return `<iframe class="card-img-top" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+}
 async function onSearch(ev) {
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
 
-    const query = formData.get("query");
+    const query = formData.get("muscle");
     const workoutResults = await (await searchForWorkout(query)).json();
     console.log("workoutResults", workoutResults);
 
@@ -148,7 +152,7 @@ function makeResultObj(workoutResult, youtubeResult) {
 // need to notice the form was submitted
 function addListeners(elem) {
     // given a form element as "elem", add an event listener
-    elem.addEventListener("submit", onSearch);
+    elem?.addEventListener("submit", onSearch);
 }
 
 
