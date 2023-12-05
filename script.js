@@ -8,24 +8,25 @@ const searchForms = [
 
 async function searchYoutube(word) {
 
-const url = `https://youtube-v2.p.rapidapi.com/search/?query=${word}&lang=en&order_by=this_month&country=us`;
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'f0e0a900a4msh479711aa70c3583p1d48bejsn352447a82dc3',
-		'X-RapidAPI-Host': 'youtube-v2.p.rapidapi.com'
-	}
-};
+    const url = `https://youtube-v2.p.rapidapi.com/search/?query=${word}&lang=en&order_by=this_month&country=us`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'f0e0a900a4msh479711aa70c3583p1d48bejsn352447a82dc3',
+            'X-RapidAPI-Host': 'youtube-v2.p.rapidapi.com'
+        }
+    };
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        console.log(result.videos[0].video_id);
+    } catch (error) {
+        console.error(error);
+    }
 
-return result;
+    return result;
 
     console.log('searchYoutube', word)
 
@@ -99,7 +100,8 @@ async function onSearch(ev) {
 
     let delay = 0
     const youtubeURLs = await Promise.all(
-        workoutResults.map(async (wordObj) => await slowYTRoll(wordObj.name, delay+=500))
+        // workoutResults.map(async (wordObj) => await slowYTRoll(wordObj.name, delay+=500))
+        workoutResults.slice(0, 2).map(async (wordObj) => await slowYTRoll(wordObj.name, delay += 500)) //FIXME
     );
     console.log("youtubeURLs", youtubeURLs);
     console.log("youtube url", youtubeURLs.contents[0].video.videoId)
@@ -170,6 +172,38 @@ function addListeners(elem) {
 
 searchForms.forEach(addListeners);
 
+function createCardFromResult(r) {
+    console.log(r);
+    const {word, rhymeData, gifURL} = r
+    let cardElem, imgElem, bodyElem, titleElem, detailsElem;
+    cardElem = document.createElement("div");
+    cardElem.classList.add("card");
+    cardElem.classList.add("rhyphy-result");
+  
+    // below is the "right way"
+    // could have just set innerHTML on cardElem
+  
+    imgElem = document.createElement("img");
+    imgElem.classList.add("card-img-top");
+    imgElem.src = gifURL;
+    imgElem.alt = `1st giphy result for ${word}`;
+  
+    bodyElem = document.createElement("div");
+    bodyElem.classList.add("card-body");
+  
+    titleElem = document.createElement("h5");
+    titleElem.classList.add("card-title");
+    titleElem.innerText = word;
+  
+    detailsElem = document.createElement("output");
+    detailsElem.classList.add("card-text");
+    detailsElem.innerText = JSON.stringify(rhymeData);
+  
+    bodyElem.append(titleElem, detailsElem)
+  
+    cardElem.append(imgElem, bodyElem)
+    return cardElem
+  }
 
 
 
