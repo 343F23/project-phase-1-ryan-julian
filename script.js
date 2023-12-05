@@ -1,7 +1,7 @@
 
 const searchForms = [
     document.querySelector("#nav-query-form"),
-    // document.querySelector("#mondo-landing-form"),
+    document.querySelector("#workoutsearch"),
 ];
 
 
