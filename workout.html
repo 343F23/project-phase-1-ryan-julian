@@ -99,20 +99,49 @@
         }
 
 // Function to display all saved blog posts
+        // function displayPosts() {
+        // const posts = JSON.parse(localStorage.getItem('blogPosts'));
+
+        // const postsDiv = document.getElementById('posts');
+        // postsDiv.innerHTML = '';
+
+        // if (posts && posts.length > 0) {
+        //   posts.forEach(post => {
+        //   const postElement = document.createElement('div');
+        //   postElement.textContent = post;
+        //   postsDiv.appendChild(postElement);
+        //   });
+        // }
+        // }
         function displayPosts() {
-        const posts = JSON.parse(localStorage.getItem('blogPosts'));
+      const posts = JSON.parse(localStorage.getItem('blogPosts'));
 
-        const postsDiv = document.getElementById('posts');
-        postsDiv.innerHTML = '';
+      const postsDiv = document.getElementById('posts');
+      postsDiv.innerHTML = '';
 
-        if (posts && posts.length > 0) {
-          posts.forEach(post => {
+      if (posts && posts.length > 0) {
+        posts.forEach((post, index) => {
           const postElement = document.createElement('div');
           postElement.textContent = post;
+
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.onclick = function () {
+            deletePost(index);
+          };
+
+          postElement.appendChild(deleteButton);
           postsDiv.appendChild(postElement);
-          });
-        }
-        }
+        });
+      }
+    }
+    function deletePost(index) {
+      let posts = JSON.parse(localStorage.getItem('blogPosts'));
+      posts.splice(index, 1);
+      localStorage.setItem('blogPosts', JSON.stringify(posts));
+      displayPosts();
+    }
+
 
 // Call displayPosts on page load to show any existing posts
 window.onload = displayPosts;
