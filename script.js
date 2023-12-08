@@ -22,6 +22,9 @@ async function searchYoutube(word) {
         const result = await response.json();
         console.log(result);
         console.log(result.videos[0].video_id);
+        const videoResult = getEmbed(result.videos[0].video_id);
+        // method to be written
+        createCardFromResult(videoResult);
     } catch (error) {
         console.error(error);
     }
@@ -205,6 +208,42 @@ function createCardFromResult(r) {
     return cardElem
   }
 
+
+  function createCardFromResult(youtubelink) {
+    event.preventDefault(); // Prevent default form submission
+
+    const { word, youtubeLink } = youtubeLink;
+    let cardElem, iframeElem, bodyElem, titleElem, wrapperElem;
+  
+    cardElem = document.createElement("div");
+    cardElem.classList.add("card");
+    cardElem.classList.add("youtube-card");
+  
+    iframeElem = document.createElement("iframe");
+    iframeElem.classList.add("card-img-top");
+    iframeElem.setAttribute("src", youtubeLink);
+    iframeElem.setAttribute("width", "560");
+    iframeElem.setAttribute("height", "315");
+    iframeElem.setAttribute("frameborder", "0");
+    iframeElem.setAttribute("allowfullscreen", "");
+  
+    bodyElem = document.createElement("div");
+    bodyElem.classList.add("card-body");
+  
+    titleElem = document.createElement("h5");
+    titleElem.classList.add("card-title");
+    titleElem.innerText = word;
+  
+    bodyElem.append(titleElem, iframeElem);
+  
+    cardElem.append(bodyElem);
+  
+    wrapperElem = document.createElement("div");
+    wrapperElem.classList.add("workoutCard");
+    wrapperElem.append(cardElem);
+  
+    return wrapperElem;
+  }
 
 
 
