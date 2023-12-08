@@ -129,7 +129,6 @@
           deleteButton.onclick = function () {
             deletePost(index);
           };
-
           postElement.appendChild(deleteButton);
           postsDiv.appendChild(postElement);
         });
@@ -141,7 +140,7 @@
       localStorage.setItem('blogPosts', JSON.stringify(posts));
       displayPosts();
     }
-
+ 
 
 // Call displayPosts on page load to show any existing posts
 window.onload = displayPosts;
