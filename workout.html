@@ -72,8 +72,6 @@
         <button type="submit" class="btn btn-primary">Search</button>
         </form>
        
-        
-
 
         <script>
         function savePost() {
@@ -97,22 +95,6 @@
 
         displayPosts();
         }
-
-// Function to display all saved blog posts
-        // function displayPosts() {
-        // const posts = JSON.parse(localStorage.getItem('blogPosts'));
-
-        // const postsDiv = document.getElementById('posts');
-        // postsDiv.innerHTML = '';
-
-        // if (posts && posts.length > 0) {
-        //   posts.forEach(post => {
-        //   const postElement = document.createElement('div');
-        //   postElement.textContent = post;
-        //   postsDiv.appendChild(postElement);
-        //   });
-        // }
-        // }
         function displayPosts() {
       const posts = JSON.parse(localStorage.getItem('blogPosts'));
 
@@ -140,12 +122,35 @@
       localStorage.setItem('blogPosts', JSON.stringify(posts));
       displayPosts();
     }
- 
-
 // Call displayPosts on page load to show any existing posts
 window.onload = displayPosts;
       </script>
-
+    <style>
+      /* Add some basic styling for the posts container */
+      #posts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px; /* Add some top margin for spacing */
+      }
+  
+      .post {
+        background-color: white; /* Set background color to white */
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        max-width: 400px;
+      }
+  
+      .post button {
+        background-color: #ff5050; /* Red background for delete button */
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 5px; /* Adjust top margin for spacing */
+      }
+    </style>
 
       
       </main>
