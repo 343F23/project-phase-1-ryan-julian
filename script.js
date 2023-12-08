@@ -24,7 +24,8 @@ async function searchYoutube(word) {
         console.log(result.videos[0].video_id);
         const videoResult = getEmbed(result.videos[0].video_id);
         // method to be written
-        createCardFromResult(videoResult);
+        document.getElementById('videos').appendChild(createCardFromResult(videoResult));
+
     } catch (error) {
         console.error(error);
     }
@@ -92,6 +93,7 @@ function getEmbed(videoId) {
     return `<iframe class="card-img-top" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
 }
 async function onSearch(ev) {
+    console.log('onSearch', ev)
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
@@ -168,6 +170,7 @@ function makeResultObj(workoutResult, youtubeResult) {
 
 // need to notice the form was submitted
 function addListeners(elem) {
+    console.log('elem', elem)
     // given a form element as "elem", add an event listener
     elem?.addEventListener("submit", onSearch);
 }
@@ -175,75 +178,45 @@ function addListeners(elem) {
 
 searchForms.forEach(addListeners);
 
-function createCardFromResult(r) {
-    console.log(r);
-    const {word, rhymeData, gifURL} = r
-    let cardElem, imgElem, bodyElem, titleElem, detailsElem;
-    cardElem = document.createElement("div");
-    cardElem.classList.add("card");
-    cardElem.classList.add("rhyphy-result");
-  
-    // below is the "right way"
-    // could have just set innerHTML on cardElem
-  
-    imgElem = document.createElement("img");
-    imgElem.classList.add("card-img-top");
-    imgElem.src = gifURL;
-    imgElem.alt = `1st giphy result for ${word}`;
-  
-    bodyElem = document.createElement("div");
-    bodyElem.classList.add("card-body");
-  
-    titleElem = document.createElement("h5");
-    titleElem.classList.add("card-title");
-    titleElem.innerText = word;
-  
-    detailsElem = document.createElement("output");
-    detailsElem.classList.add("card-text");
-    detailsElem.innerText = JSON.stringify(rhymeData);
-  
-    bodyElem.append(titleElem, detailsElem)
-  
-    cardElem.append(imgElem, bodyElem)
-    return cardElem
-  }
 
+function createCardFromResult(youtubelink) {
+    console.log('createCardFromResult(youtubelink)', youtubelink)
+    const iframeElem = document.createElement('div')
+    iframeElem.innerHTML = youtubelink
+    // document.body.append(iframeElem)
 
-  function createCardFromResult(youtubelink) {
-    event.preventDefault(); // Prevent default form submission
+    // const { word, youtubeLink } = youtubeLink;
+    let cardElem, bodyElem, titleElem, wrapperElem;
 
-    const { word, youtubeLink } = youtubeLink;
-    let cardElem, iframeElem, bodyElem, titleElem, wrapperElem;
-  
     cardElem = document.createElement("div");
     cardElem.classList.add("card");
     cardElem.classList.add("youtube-card");
-  
-    iframeElem = document.createElement("iframe");
-    iframeElem.classList.add("card-img-top");
-    iframeElem.setAttribute("src", youtubeLink);
-    iframeElem.setAttribute("width", "560");
-    iframeElem.setAttribute("height", "315");
-    iframeElem.setAttribute("frameborder", "0");
-    iframeElem.setAttribute("allowfullscreen", "");
-  
+
+    // iframeElem = document.createElement("iframe");
+    // iframeElem.classList.add("card-img-top");
+    // iframeElem.setAttribute("src", youtubeLink);
+    // iframeElem.setAttribute("width", "560");
+    // iframeElem.setAttribute("height", "315");
+    // iframeElem.setAttribute("frameborder", "0");
+    // iframeElem.setAttribute("allowfullscreen", "");
+
     bodyElem = document.createElement("div");
     bodyElem.classList.add("card-body");
-  
+
     titleElem = document.createElement("h5");
     titleElem.classList.add("card-title");
-    titleElem.innerText = word;
-  
+    titleElem.innerText = "title";
+
     bodyElem.append(titleElem, iframeElem);
-  
+
     cardElem.append(bodyElem);
-  
+
     wrapperElem = document.createElement("div");
     wrapperElem.classList.add("workoutCard");
     wrapperElem.append(cardElem);
-  
+    console.log("wrapper elem: ", wrapperElem)
     return wrapperElem;
-  }
+}
 
 
 

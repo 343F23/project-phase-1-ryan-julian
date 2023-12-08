@@ -12,7 +12,7 @@
         color: purple;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items:flex-start
         margin-top: 20px; /* Add some top margin for spacing */
       }
   
@@ -89,6 +89,7 @@
         <textarea id="blogPost" placeholder="Write your post here..."></textarea>
         <button onclick="savePost()">Post</button>
         <div id="posts"></div>
+        </form>
         
         <form id="workoutsearch" role="search"> 
         <h2>Try a new workout!</h2>
@@ -101,7 +102,7 @@
         <button type="submit" class="btn btn-primary">Search</button>
         </form>
        
-
+        <div id="videos"></div>
         <script>
         function savePost() {
           event.preventDefault(); // Prevent default form submission
