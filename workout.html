@@ -26,6 +26,7 @@
 
       div{
         margin-left: 20px;
+
       }
 
       #newworkout{
@@ -55,6 +56,17 @@
         cursor: pointer;
         margin-top: 5px; /* Adjust top margin for spacing */
         margin-left: 400px;
+
+        iframe{
+          max-width: 500px;
+        }
+
+        .workoutSearch{
+          max-width: 200px;
+        }
+        #videos{
+          max-width: 300px;
+        }
       }
       </style>
   </head>
@@ -162,16 +174,34 @@
           postElement.textContent = post;
           postElement.classList.add('post')
 
+          const editButton = document.createElement('button');
+          editButton.textContent = 'Edit';
+          editButton.onclick = function () {
+            editPost(index);
+          };
+          postElement.appendChild(editButton);
+
           const deleteButton = document.createElement('button');
           deleteButton.textContent = 'Delete';
           deleteButton.onclick = function () {
             deletePost(index);
           };
           postElement.appendChild(deleteButton);
+          
           postsDiv.appendChild(postElement);
         });
       }
     }
+    function editPost(index) {
+      let posts = JSON.parse(localStorage.getItem('blogPosts'));
+      const updatedPost = prompt('Edit your post:', posts[index]);
+      if (updatedPost !== null) {
+        posts[index] = updatedPost;
+        localStorage.setItem('blogPosts', JSON.stringify(posts));
+        displayPosts();
+      }
+    }
+    
     function deletePost(index) {
       let posts = JSON.parse(localStorage.getItem('blogPosts'));
       posts.splice(index, 1);

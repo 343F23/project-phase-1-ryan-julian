@@ -90,7 +90,7 @@ async function slowYTRoll(query, delay) {
 
 
 function getEmbed(videoId) {
-    return `<iframe class="card-img-top" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+    return `<iframe class="card-img-top" min-width="100px" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
 }
 async function onSearch(ev) {
     console.log('onSearch', ev)
