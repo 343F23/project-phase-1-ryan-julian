@@ -24,7 +24,7 @@ async function searchYoutube(word) {
         console.log(result.videos[0].video_id);
         const videoResult = getEmbed(result.videos[0].video_id);
         // method to be written
-        document.getElementById('videos').appendChild(createCardFromResult(videoResult));
+        document.getElementById('videos').appendChild(createCardFromResult(videoResult, word));
 
     } catch (error) {
         console.error(error);
@@ -115,18 +115,40 @@ async function onSearch(ev) {
 
     // insert the result set into the dom
 
-    const resultsElem = document.getElementById("rhyphy-result-set-list");
-    resultsElem.innerHTML = ''
+    // const resultsElem = document.getElementById("videos");
+    // resultsElem.innerHTML = ''
 
-    // CREATES CARD COULD DISPLAY ANOTHER WAY
-    resultsElem.append(...resultSet.results.map(createCardFromResult))
+    // // CREATES CARD COULD DISPLAY ANOTHER WAY
+    // resultsElem.append(...resultSet.results.map(createCardFromResult))
 
-    // prepare a lin kto export the data
-    const exportLink = document.getElementById("export");
-    exportLink.href = makeDLURL(resultSet);
+    // // prepare a lin kto export the data
+    // const exportLink = document.getElementById("export");
+    // exportLink.href = makeDLURL(resultSet);
+    // exportLink.download = "workout-export";
 
-    // exportLink.download = "rhyphy-expor";
-
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     const resultsElem = document.getElementById("videos");
+    //     const exportBtn = document.getElementById("export");
+    
+    //     exportBtn.addEventListener("click", function () {
+    //         console.log("Button clicked");
+    //         resultsElem.innerHTML = '';
+    //         resultsElem.append(...resultSet.results.map(createCardFromResult));
+    
+    //         // prepare a link to export the data
+    //         const exportLink = document.createElement("a");
+    //         exportLink.href = makeDLURL(resultSet);
+    //         exportLink.download = "workout-export";
+    //         exportLink.click();
+    //     });
+    // });
+    document.addEventListener("DOMContentLoaded", function () {
+        const exportBtn = document.getElementById("export");
+    
+        exportBtn.addEventListener("click", function () {
+            console.log("Button clicked");
+        });
+    });
 }
 
 function makeDLURL(data) {
@@ -179,7 +201,7 @@ function addListeners(elem) {
 searchForms.forEach(addListeners);
 
 
-function createCardFromResult(youtubelink) {
+function createCardFromResult(youtubelink, word) {
     console.log('createCardFromResult(youtubelink)', youtubelink)
     const iframeElem = document.createElement('div')
     iframeElem.innerHTML = youtubelink
@@ -191,6 +213,8 @@ function createCardFromResult(youtubelink) {
     cardElem = document.createElement("div");
     cardElem.classList.add("card");
     cardElem.classList.add("youtube-card");
+    cardElem.setAttribute("id", "caahd")
+
 
     // iframeElem = document.createElement("iframe");
     // iframeElem.classList.add("card-img-top");
@@ -205,7 +229,7 @@ function createCardFromResult(youtubelink) {
 
     titleElem = document.createElement("h5");
     titleElem.classList.add("card-title");
-    titleElem.innerText = "title";
+    titleElem.innerText = word;
 
     bodyElem.append(titleElem, iframeElem);
 
@@ -213,6 +237,7 @@ function createCardFromResult(youtubelink) {
 
     wrapperElem = document.createElement("div");
     wrapperElem.classList.add("workoutCard");
+    wrapperElem.setAttribute("id", "videocahd");
     wrapperElem.append(cardElem);
     console.log("wrapper elem: ", wrapperElem)
     return wrapperElem;
