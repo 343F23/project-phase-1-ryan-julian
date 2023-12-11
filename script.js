@@ -1,4 +1,5 @@
 
+
 const searchForms = [
     document.querySelector("#nav-query-form"),
     document.querySelector("#workoutsearch"),
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('blob url', makeDLURL(localStorage))
          const anchor = document.getElementById("download");
          anchor.href  = makeDLURL(localStorage)
-         
+
     });
 });
 
