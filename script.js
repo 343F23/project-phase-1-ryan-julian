@@ -142,14 +142,21 @@ async function onSearch(ev) {
     //         exportLink.click();
     //     });
     // });
-    document.addEventListener("DOMContentLoaded", function () {
-        const exportBtn = document.getElementById("export");
     
-        exportBtn.addEventListener("click", function () {
-            console.log("Button clicked");
-        });
-    });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const exportBtn = document.getElementById("export");
+
+    exportBtn.addEventListener("click", function () {
+        console.log("Button clicked");
+        console.log('local storage keys: ', Object.keys(localStorage))
+        console.log('blob url', makeDLURL(localStorage))
+         const anchor = document.getElementById("download");
+         anchor.href  = makeDLURL(localStorage)
+         
+    });
+});
 
 function makeDLURL(data) {
     // https://developer.mozilla.org/en-US/docs/Web/API/Blob#creating_a_blob
